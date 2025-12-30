@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Production Report Generator</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
-       
+        
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
@@ -21,252 +21,336 @@
             flex-direction: column;
             align-items: center;
         }
-       
+        
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             display: flex;
             flex-direction: column;
             gap: 25px;
         }
-       
+        
         .input-section {
             background: white;
             border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-       
+        
         .report-section {
             background: white;
             border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             display: none;
         }
-       
+        
         h1 {
             color: white;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 32px;
+            font-size: 36px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
-       
+        
         .section-title {
             color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #3498db;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-align: center;
         }
-       
+        
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
         }
-       
+        
         .input-group {
             display: flex;
             flex-direction: column;
         }
-       
+        
         .input-group label {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #2c3e50;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
+            letter-spacing: 0.3px;
         }
-       
+        
         .input-group input {
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background-color: #fafafa;
         }
-       
+        
         .input-group input:focus {
             outline: none;
             border-color: #3498db;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
-       
+        
         .button-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
-       
+        
         button {
-            padding: 14px 30px;
+            padding: 16px 35px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 180px;
+            min-width: 200px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-       
+        
         .generate-btn {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
         }
-       
+        
         .generate-btn:hover {
             background: linear-gradient(135deg, #2980b9, #21618c);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(41, 128, 185, 0.4);
         }
-       
+        
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
         }
-       
+        
         .whatsapp-btn:hover {
             background: linear-gradient(135deg, #128C7E, #075E54);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.4);
         }
-       
+        
         .reset-btn {
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: white;
         }
-       
+        
         .reset-btn:hover {
             background: linear-gradient(135deg, #c0392b, #a93226);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(231, 76, 60, 0.4);
         }
-       
+        
         .back-btn {
             background: linear-gradient(135deg, #95a5a6, #7f8c8d);
             color: white;
         }
-       
+        
         .back-btn:hover {
             background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(149, 165, 166, 0.4);
         }
-       
+        
         .report-container {
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border: 2px solid #ddd;
+            border: 2px solid #e0e0e0;
         }
-       
+        
         .report-header {
             background: linear-gradient(135deg, #1a5fb4, #2d8ceb);
             color: white;
-            padding: 30px 20px;
+            padding: 35px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-       
+        
+        .report-header:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
         .report-title {
             font-size: 32px;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
-       
+        
+        .report-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
         .report-details {
             display: flex;
             justify-content: center;
             gap: 40px;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 17px;
+            margin-top: 20px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
-       
+        
+        .report-details span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+        
         .report-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            font-size: 17px;
         }
-       
+        
         .report-table th {
             background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 20px;
-            font-weight: 700;
+            padding: 22px 20px;
             font-size: 18px;
-        }
-       
-        .report-table th:first-child {
-            text-align: left;
-            width: 40%;
-        }
-       
-        .report-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid #ddd;
-            vertical-align: middle;
-        }
-       
-        .section-header td {
-            background-color: #e9f1ff !important;
             font-weight: 700;
-            color: #1a5fb4;
-            font-size: 19px;
-            text-align: left;
+            width: 40%;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
-       
+        
+        .report-table th:last-child {
+            border-right: none;
+        }
+        
+        .report-table th:nth-child(2),
+        .report-table th:nth-child(3) {
+            width: 30%;
+        }
+        
+        .report-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 17px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .section-header {
+            background-color: #f0f7ff;
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 18px;
+            border-left: 4px solid #3498db;
+        }
+        
         .bullet-item {
             padding-left: 35px;
             position: relative;
-            font-weight: 500;
+            text-align: left;
+            font-weight: 600;
         }
-       
+        
         .bullet-item:before {
-            content: "•";
+            content: "▸";
             position: absolute;
-            left: 15px;
+            left: 20px;
             color: #1a5fb4;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 18px;
         }
-       
+        
         .today-column {
-            background-color: #f0f8ff;
-            text-align: center;
+            background-color: #f0f7ff;
+            border-right: 1px solid #e0e0e0;
             font-weight: 600;
+            color: #1a5fb4;
         }
-       
+        
         .mtd-column {
-            background-color: #f9f9f9;
-            text-align: center;
+            background-color: #f8f9fa;
             font-weight: 600;
+            color: #2c3e50;
         }
-       
+        
         .footer {
-            padding: 20px;
+            padding: 25px;
             background-color: #f8f9fa;
             text-align: center;
             color: #555;
             font-size: 15px;
             border-top: 1px solid #eaeaea;
+            font-weight: 500;
         }
-       
+        
         @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .report-details { flex-direction: column; gap: 10px; }
-            .button-group { flex-direction: column; align-items: center; }
-            button { width: 100%; max-width: 300px; }
-            .report-title { font-size: 26px; }
-            .report-table th, .report-table td { padding: 14px; font-size: 15px; }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-details {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            button {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .report-table th, .report-table td {
+                padding: 15px 12px;
+                font-size: 15px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
         }
-       
+        
         .loading {
             display: none;
             text-align: center;
@@ -275,50 +359,140 @@
             font-size: 20px;
             font-weight: 600;
         }
+        
+        .loading i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        /* Canvas for generating image */
+        #reportCanvas {
+            display: none;
+            max-width: 100%;
+        }
+        
+        .cell-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 5px 0;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+            border-left: 5px solid #3498db;
+        }
+        
+        .success-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>📊 Production Report Generator</h1>
-   
+    <h1><i class="fas fa-chart-line"></i> Production Report Generator</h1>
+    
     <div class="container">
+        <!-- Input Section -->
         <div class="input-section" id="inputSection">
             <h2 class="section-title">Enter Production Data</h2>
-           
+            
             <div class="form-grid">
-                <div class="input-group"><label>Site Name</label><input type="text" id="siteName" value="9HA"></div>
-                <div class="input-group"><label>Report Date</label><input type="date" id="reportDate" value="2025-12-29"></div>
+                <!-- Report Info -->
+                <div class="input-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Site Name</label>
+                    <input type="text" id="siteName" value="9HA" placeholder="Enter site name">
+                </div>
                 
-                <div class="input-group"><label>TODAY - Holes (Nos.)</label><input type="number" id="todayHoles" value="587"></div>
-                <div class="input-group"><label>TODAY - Feet (ft)</label><input type="number" step="0.1" id="todayFeet" value="2964"></div>
-                <div class="input-group"><label>TODAY - A-Grade (Tons)</label><input type="number" step="0.1" id="todayAGrade" value="2371.2"></div>
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-alt"></i> Report Date</label>
+                    <input type="date" id="reportDate" value="2025-12-29">
+                </div>
                 
-                <div class="input-group"><label>MTD - Holes (Nos.)</label><input type="number" id="mtdHoles" value="4689"></div>
-                <div class="input-group"><label>MTD - Feet (ft)</label><input type="number" step="0.1" id="mtdFeet" value="24158.5"></div>
-                <div class="input-group"><label>MTD - A-Grade (Tons)</label><input type="number" step="0.1" id="mtdAGrade" value="19326.8"></div>
+                <!-- TODAY Data -->
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-day"></i> TODAY - Holes (Nos.)</label>
+                    <input type="number" id="todayHoles" value="587" placeholder="Enter holes count">
+                </div>
                 
-                <div class="input-group"><label>Blasting Status</label><input type="text" id="blastingStatus" value="Done"></div>
-                <div class="input-group"><label>Compressors (Nos.)</label><input type="number" id="compressors" value="9"></div>
-                <div class="input-group"><label>NMR (Nos.)</label><input type="number" id="nmr" value="9"></div>
+                <div class="input-group">
+                    <label><i class="fas fa-ruler-vertical"></i> TODAY - Feet (ft)</label>
+                    <input type="number" step="0.1" id="todayFeet" value="2964" placeholder="Enter feet">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-weight-hanging"></i> TODAY - A-Grade (Tons)</label>
+                    <input type="number" step="0.1" id="todayAGrade" value="2371.2" placeholder="Enter A-Grade tons">
+                </div>
+                
+                <!-- MTD Data -->
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-month"></i> MTD - Holes (Nos.)</label>
+                    <input type="number" id="mtdHoles" value="4689" placeholder="Enter MTD holes">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-ruler-combined"></i> MTD - Feet (ft)</label>
+                    <input type="number" step="0.1" id="mtdFeet" value="24158.5" placeholder="Enter MTD feet">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-truck-loading"></i> MTD - A-Grade (Tons)</label>
+                    <input type="number" step="0.1" id="mtdAGrade" value="19326.8" placeholder="Enter MTD A-Grade">
+                </div>
+                
+                <!-- Operations Data -->
+                <div class="input-group">
+                    <label><i class="fas fa-bomb"></i> Blasting Status</label>
+                    <input type="text" id="blastingStatus" value="Completed" placeholder="Enter blasting status">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-compress-arrows-alt"></i> Compressors (Nos.)</label>
+                    <input type="number" id="compressors" value="9" placeholder="Enter compressors count">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-hard-hat"></i> NMR (Nos.)</label>
+                    <input type="number" id="nmr" value="9" placeholder="Enter NMR count">
+                </div>
             </div>
-           
+            
             <div class="button-group">
-                <button class="generate-btn" onclick="generateReport()">Generate Report</button>
-                <button class="reset-btn" onclick="resetForm()">Reset Form</button>
+                <button class="generate-btn" onclick="generateReport()">
+                    <i class="fas fa-file-alt"></i> Generate Report
+                </button>
+                <button class="reset-btn" onclick="resetForm()">
+                    <i class="fas fa-redo"></i> Reset Form
+                </button>
             </div>
         </div>
-       
-        <div class="loading" id="loading">⏳ Generating report...</div>
-       
+        
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner fa-spin"></i> Generating Report...
+        </div>
+        
+        <!-- Report Section -->
         <div class="report-section" id="reportSection">
             <div class="report-container" id="reportToShare">
                 <div class="report-header">
                     <div class="report-title" id="reportTitle">PRODUCTION REPORT</div>
+                    <div class="report-subtitle" id="reportSubtitle">Daily Operations Summary</div>
                     <div class="report-details">
-                        <span>📅 Date: <span id="displayDate">29-12-2025</span></span>
-                        <span>📍 Site: <span id="displaySite">9HA</span></span>
+                        <span><i class="fas fa-calendar-alt"></i> Date: <span id="displayDate">29-12-2025</span></span>
+                        <span><i class="fas fa-map-marker-alt"></i> Site: <span id="displaySite">9HA</span></span>
                     </div>
                 </div>
-               
+                
                 <table class="report-table">
                     <thead>
                         <tr>
@@ -328,145 +502,286 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="section-header"><td colspan="3">DRILLING</td></tr>
-                        <tr><td class="bullet-item">Holes</td><td class="today-column" id="todayHolesDisplay">587 Nos.</td><td class="mtd-column" id="mtdHolesDisplay">4,689 Nos.</td></tr>
-                        <tr><td class="bullet-item">Feet</td><td class="today-column" id="todayFeetDisplay">2,964 ft</td><td class="mtd-column" id="mtdFeetDisplay">24,158.5 ft</td></tr>
-                       
-                        <tr class="section-header"><td colspan="3">PRODUCTION</td></tr>
-                        <tr><td class="bullet-item">A-Grade</td><td class="today-column" id="todayAGradeDisplay">2,371.2 Tons</td><td class="mtd-column" id="mtdAGradeDisplay">19,326.8 Tons</td></tr>
-                       
-                        <tr class="section-header"><td colspan="3">OPERATIONS</td></tr>
-                        <tr><td class="bullet-item">Blasting</td><td class="today-column" id="blastingDisplay">✅ Done</td><td class="mtd-column">-</td></tr>
-                        <tr><td class="bullet-item">Compressors</td><td class="today-column" id="compressorsDisplay">09 Nos.</td><td class="mtd-column">-</td></tr>
-                        <tr><td class="bullet-item">NMR</td><td class="today-column" id="nmrDisplay">09 Nos.</td><td class="mtd-column">-</td></tr>
+                        <!-- DRILLING SECTION -->
+                        <tr class="section-header">
+                            <td><i class="fas fa-digging"></i> DRILLING</td>
+                            <td class="today-column"></td>
+                            <td class="mtd-column"></td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">Holes (Nos.)</td>
+                            <td class="today-column cell-box highlight" id="todayHolesDisplay">587 Nos.</td>
+                            <td class="mtd-column cell-box" id="mtdHolesDisplay">4,689 Nos.</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">Feet (ft)</td>
+                            <td class="today-column cell-box highlight" id="todayFeetDisplay">2,964 ft</td>
+                            <td class="mtd-column cell-box" id="mtdFeetDisplay">24,158.5 ft</td>
+                        </tr>
+                        
+                        <!-- PRODUCTION SECTION -->
+                        <tr class="section-header">
+                            <td><i class="fas fa-industry"></i> PRODUCTION</td>
+                            <td class="today-column"></td>
+                            <td class="mtd-column"></td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">A-Grade (Tons)</td>
+                            <td class="today-column cell-box highlight" id="todayAGradeDisplay">2,371.2 Tons</td>
+                            <td class="mtd-column cell-box" id="mtdAGradeDisplay">19,326.8 Tons</td>
+                        </tr>
+                        
+                        <!-- OPERATIONS SECTION -->
+                        <tr class="section-header">
+                            <td><i class="fas fa-cogs"></i> OPERATIONS</td>
+                            <td class="today-column"></td>
+                            <td class="mtd-column"></td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">Blasting Status</td>
+                            <td class="today-column cell-box" id="blastingDisplay">
+                                <span class="success-badge">Completed</span>
+                            </td>
+                            <td class="mtd-column cell-box">-</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">Compressors (Nos.)</td>
+                            <td class="today-column cell-box" id="compressorsDisplay">09 Nos.</td>
+                            <td class="mtd-column cell-box">-</td>
+                        </tr>
+                        <tr>
+                            <td class="bullet-item">NMR (Nos.)</td>
+                            <td class="today-column cell-box" id="nmrDisplay">09 Nos.</td>
+                            <td class="mtd-column cell-box">-</td>
+                        </tr>
                     </tbody>
                 </table>
-               
+                
                 <div class="footer">
-                    Report generated on <%= new Date().toLocaleDateString('en-IN') %>
+                    <i class="fas fa-info-circle"></i> Generated by Production Report System | For internal use only
                 </div>
             </div>
-           
+            
             <div class="button-group" style="margin-top: 30px;">
-                <button class="whatsapp-btn" onclick="shareToWhatsApp()">📱 Share to WhatsApp (Image)</button>
-                <button class="back-btn" onclick="backToInput()">← Edit Report</button>
+                <button class="whatsapp-btn" onclick="generateAndShareImage()">
+                    <i class="fab fa-whatsapp"></i> Share as Image to WhatsApp
+                </button>
+                <button class="back-btn" onclick="backToInput()">
+                    <i class="fas fa-edit"></i> Edit Report
+                </button>
             </div>
+            
+            <!-- Hidden canvas for image generation -->
+            <canvas id="reportCanvas" width="1000" height="1400"></canvas>
         </div>
     </div>
 
+    <!-- Include html2canvas library for image generation -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
     <script>
         function generateReport() {
+            // Show loading
             document.getElementById('loading').style.display = 'block';
-           
+            
+            // Get all input values
             const siteName = document.getElementById('siteName').value || '9HA';
             const reportDate = document.getElementById('reportDate').value;
+            
+            // TODAY values
+            const todayHoles = document.getElementById('todayHoles').value;
+            const todayFeet = document.getElementById('todayFeet').value;
+            const todayAGrade = document.getElementById('todayAGrade').value;
+            
+            // MTD values
+            const mtdHoles = document.getElementById('mtdHoles').value;
+            const mtdFeet = document.getElementById('mtdFeet').value;
+            const mtdAGrade = document.getElementById('mtdAGrade').value;
+            
+            // Operations values
+            const blastingStatus = document.getElementById('blastingStatus').value;
+            const compressors = document.getElementById('compressors').value;
+            const nmr = document.getElementById('nmr').value;
+            
+            // Format date
             const formattedDate = formatDate(reportDate);
-           
-            document.getElementById('reportTitle').textContent = `PRODUCTION REPORT – ${siteName.toUpperCase()}`;
+            
+            // Update report title and details
+            document.getElementById('reportTitle').textContent = `PRODUCTION REPORT – ${siteName}`;
+            document.getElementById('reportSubtitle').textContent = `Daily Operations Summary for ${formattedDate}`;
             document.getElementById('displayDate').textContent = formattedDate;
-            document.getElementById('displaySite').textContent = siteName.toUpperCase();
-           
-            document.getElementById('todayHolesDisplay').textContent = `${formatNumber(document.getElementById('todayHoles').value)} Nos.`;
-            document.getElementById('todayFeetDisplay').textContent = `${formatNumber(document.getElementById('todayFeet').value, 1)} ft`;
-            document.getElementById('todayAGradeDisplay').textContent = `${formatNumber(document.getElementById('todayAGrade').value, 1)} Tons`;
-           
-            document.getElementById('mtdHolesDisplay').textContent = `${formatNumber(document.getElementById('mtdHoles').value)} Nos.`;
-            document.getElementById('mtdFeetDisplay').textContent = `${formatNumber(document.getElementById('mtdFeet').value, 1)} ft`;
-            document.getElementById('mtdAGradeDisplay').textContent = `${formatNumber(document.getElementById('mtdAGrade').value, 1)} Tons`;
-           
-            const blasting = document.getElementById('blastingStatus').value.trim();
-            document.getElementById('blastingDisplay').textContent = blasting ? `✅ ${blasting}` : '-';
-           
-            const comp = document.getElementById('compressors').value;
-            document.getElementById('compressorsDisplay').textContent = comp ? `${comp.toString().padStart(2, '0')} Nos.` : '-';
-           
-            const nmrVal = document.getElementById('nmr').value;
-            document.getElementById('nmrDisplay').textContent = nmrVal ? `${nmrVal.toString().padStart(2, '0')} Nos.` : '-';
-           
+            document.getElementById('displaySite').textContent = siteName;
+            
+            // Update TODAY values with formatting
+            document.getElementById('todayHolesDisplay').textContent = `${formatNumber(todayHoles)} Nos.`;
+            document.getElementById('todayFeetDisplay').textContent = `${formatNumber(todayFeet, 1)} ft`;
+            document.getElementById('todayAGradeDisplay').textContent = `${formatNumber(todayAGrade, 1)} Tons`;
+            
+            // Update MTD values with formatting
+            document.getElementById('mtdHolesDisplay').textContent = `${formatNumber(mtdHoles)} Nos.`;
+            document.getElementById('mtdFeetDisplay').textContent = `${formatNumber(mtdFeet, 1)} ft`;
+            document.getElementById('mtdAGradeDisplay').textContent = `${formatNumber(mtdAGrade, 1)} Tons`;
+            
+            // Update operations
+            const blastingDisplay = document.getElementById('blastingDisplay');
+            blastingDisplay.innerHTML = blastingStatus ? 
+                `<span class="success-badge">${blastingStatus}</span>` : 
+                '<span style="color:#e74c3c;">Not Completed</span>';
+            
+            document.getElementById('compressorsDisplay').textContent = compressors ? `${compressors.toString().padStart(2, '0')} Nos.` : '00 Nos.';
+            document.getElementById('nmrDisplay').textContent = nmr ? `${nmr.toString().padStart(2, '0')} Nos.` : '00 Nos.';
+            
+            // Simulate loading delay
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('inputSection').style.display = 'none';
                 document.getElementById('reportSection').style.display = 'block';
-            }, 600);
+                
+                // Scroll to report
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }, 800);
         }
-       
-        async function shareToWhatsApp() {
-            const reportElement = document.getElementById('reportToShare');
-            reportElement.style.boxShadow = '0 0 20px rgba(37,211,102,0.5)';
-           
-            try {
-                const canvas = await html2canvas(reportElement, {
-                    scale: 2,
-                    useCORS: true,
-                    backgroundColor: '#ffffff'
-                });
-               
-                canvas.toBlob(async (blob) => {
-                    if (navigator.share && navigator.canShare && navigator.canShare({ files: [new File([blob], 'report.png', { type: 'image/png' })] })) {
-                        const file = new File([blob], `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`, { type: 'image/png' });
-                        await navigator.share({
-                            files: [file],
-                            title: 'Production Report',
-                            text: `Production Report - ${document.getElementById('displaySite').textContent} (${document.getElementById('displayDate').textContent})`
-                        });
-                    } else {
-                        // Fallback: Download image
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`;
-                        a.click();
-                        URL.revokeObjectURL(url);
-                        alert('📸 Image downloaded! Now you can attach and send it on WhatsApp.');
-                    }
-                    reportElement.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-                }, 'image/png');
-            } catch (err) {
-                alert('Error generating image. Please take a screenshot manually.');
-                console.error(err);
-            }
-        }
-       
-        function backToInput() {
-            document.getElementById('inputSection').style.display = 'block';
-            document.getElementById('reportSection').style.display = 'none';
-        }
-       
+        
         function resetForm() {
+            // Reset all inputs to default values
             document.getElementById('siteName').value = '9HA';
             document.getElementById('reportDate').value = '2025-12-29';
+            
             document.getElementById('todayHoles').value = '587';
             document.getElementById('todayFeet').value = '2964';
             document.getElementById('todayAGrade').value = '2371.2';
+            
             document.getElementById('mtdHoles').value = '4689';
             document.getElementById('mtdFeet').value = '24158.5';
             document.getElementById('mtdAGrade').value = '19326.8';
-            document.getElementById('blastingStatus').value = 'Done';
+            
+            document.getElementById('blastingStatus').value = 'Completed';
             document.getElementById('compressors').value = '9';
             document.getElementById('nmr').value = '9';
         }
-       
+        
+        function backToInput() {
+            document.getElementById('inputSection').style.display = 'block';
+            document.getElementById('reportSection').style.display = 'none';
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        function generateAndShareImage() {
+            const reportElement = document.getElementById('reportToShare');
+            
+            // Show loading
+            const whatsappBtn = document.querySelector('.whatsapp-btn');
+            const originalText = whatsappBtn.innerHTML;
+            whatsappBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Image...';
+            whatsappBtn.disabled = true;
+            
+            // Use html2canvas to capture the report as image
+            html2canvas(reportElement, {
+                scale: 2, // Higher quality
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                width: reportElement.offsetWidth,
+                height: reportElement.offsetHeight
+            }).then(canvas => {
+                // Convert canvas to image
+                const imageData = canvas.toDataURL('image/png');
+                
+                // Create a temporary link to download/share
+                const link = document.createElement('a');
+                link.href = imageData;
+                link.download = `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`;
+                
+                // For mobile devices - try to share via WhatsApp
+                if (navigator.share) {
+                    // Convert data URL to blob
+                    fetch(imageData)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            const file = new File([blob], link.download, { type: 'image/png' });
+                            
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                navigator.share({
+                                    files: [file],
+                                    title: `Production Report - ${document.getElementById('displaySite').textContent}`,
+                                    text: `Production report for ${document.getElementById('displayDate').textContent}`
+                                })
+                                .then(() => console.log('Shared successfully'))
+                                .catch(error => {
+                                    console.log('Sharing failed:', error);
+                                    // Fallback to download
+                                    link.click();
+                                });
+                            } else {
+                                // Fallback to download
+                                link.click();
+                            }
+                        });
+                } else {
+                    // For desktop - download the image
+                    link.click();
+                    
+                    // Show instructions for WhatsApp
+                    alert('✅ Image generated successfully!\n\n1. The image has been downloaded\n2. Open WhatsApp\n3. Send the downloaded image\n\nFile: ' + link.download);
+                }
+                
+                // Restore button
+                whatsappBtn.innerHTML = originalText;
+                whatsappBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error generating image:', error);
+                alert('Error generating image. Please try again or take a screenshot instead.');
+                
+                // Restore button
+                whatsappBtn.innerHTML = originalText;
+                whatsappBtn.disabled = false;
+            });
+        }
+        
         function formatDate(dateString) {
-            if (!dateString) return 'DD-MM-YYYY';
+            if (!dateString) {
+                const today = new Date();
+                dateString = today.toISOString().split('T')[0];
+            }
+            
             const date = new Date(dateString);
             const day = date.getDate().toString().padStart(2, '0');
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
             const year = date.getFullYear();
+            
             return `${day}-${month}-${year}`;
         }
-       
+        
         function formatNumber(value, decimals = 0) {
             if (!value) return '0';
+            
             const num = parseFloat(value);
             if (isNaN(num)) return '0';
-            return num.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+            
+            // Add thousands separators
+            return num.toLocaleString('en-IN', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            });
         }
-       
-        document.addEventListener('DOMContentLoaded', () => {
-            const today = new Date().toISOString().split('T')[0];
+        
+        // Initialize with current date if empty
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const formattedToday = today.toISOString().split('T')[0];
+            
             if (!document.getElementById('reportDate').value) {
-                document.getElementById('reportDate').value = today;
+                document.getElementById('reportDate').value = formattedToday;
             }
+            
+            // Add input validation
+            const numberInputs = document.querySelectorAll('input[type="number"]');
+            numberInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value < 0) this.value = 0;
+                });
+            });
         });
     </script>
 </body>
