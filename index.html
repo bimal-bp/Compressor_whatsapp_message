@@ -12,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
-       
+      
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
@@ -21,7 +21,7 @@
             flex-direction: column;
             align-items: center;
         }
-       
+      
         .container {
             width: 100%;
             max-width: 1100px;
@@ -29,22 +29,16 @@
             flex-direction: column;
             gap: 25px;
         }
-       
-        .input-section {
+      
+        .input-section, .report-section {
             background: white;
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-       
-        .report-section {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            display: none;
-        }
-       
+      
+        .report-section { display: none; }
+      
         h1 {
             color: white;
             text-align: center;
@@ -52,435 +46,142 @@
             font-size: 36px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
-       
+      
         .section-title {
             color: #2c3e50;
             margin-bottom: 25px;
             padding-bottom: 12px;
             border-bottom: 3px solid #3498db;
             font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
             text-align: center;
         }
-       
+      
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
         }
-       
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
-       
+      
         .input-group label {
             margin-bottom: 10px;
             color: #2c3e50;
             font-weight: 600;
             font-size: 15px;
-            letter-spacing: 0.3px;
         }
-       
+      
         .input-group input {
             padding: 14px 18px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
-            transition: all 0.3s;
             background-color: #fafafa;
         }
-       
+      
         .input-group input:focus {
             outline: none;
             border-color: #3498db;
-            background-color: white;
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
-       
+      
         .button-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             margin-top: 25px;
             flex-wrap: wrap;
         }
-       
+      
         button {
-            padding: 16px 35px;
+            padding: 16px 30px;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 200px;
-            letter-spacing: 0.5px;
+            min-width: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: all 0.3s ease;
         }
-       
-        .generate-btn {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-        }
-       
-        .generate-btn:hover {
-            background: linear-gradient(135deg, #2980b9, #21618c);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(41, 128, 185, 0.4);
-        }
-       
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-        }
-       
-        .whatsapp-btn:hover {
-            background: linear-gradient(135deg, #128C7E, #075E54);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.4);
-        }
-       
-        .reset-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-        }
-       
-        .reset-btn:hover {
-            background: linear-gradient(135deg, #c0392b, #a93226);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(231, 76, 60, 0.4);
-        }
-       
-        .back-btn {
-            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-            color: white;
-        }
-       
-        .back-btn:hover {
-            background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(149, 165, 166, 0.4);
-        }
-       
-        .report-container {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border: 2px solid #e0e0e0;
-        }
-       
-        .report-header {
-            background: linear-gradient(135deg, #1a5fb4, #2d8ceb);
-            color: white;
-            padding: 35px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-       
-        .report-header:before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            z-index: 0;
-        }
-       
-        .report-title {
-            font-size: 28px; /* Reduced size */
-            font-weight: 700;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-       
-        .report-details {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            font-size: 17px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-       
-        .report-details span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 8px 20px;
-            border-radius: 50px;
-        }
-       
-        .report-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-       
-        .report-table th {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 22px 20px;
-            font-size: 18px;
-            font-weight: 700;
-            width: 40%;
-            letter-spacing: 0.5px;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-        }
-       
-        .report-table th:last-child {
-            border-right: none;
-        }
-       
-        .report-table th:nth-child(2),
-        .report-table th:nth-child(3) {
-            width: 30%;
-        }
-       
-        .report-table td {
-            padding: 20px;
-            border-bottom: 1px solid #eaeaea;
-            font-size: 17px;
-            text-align: center;
-            font-weight: 500;
-        }
-       
-        .section-header {
-            background-color: #f0f7ff;
-            font-weight: 700;
-            color: #2c3e50;
-            font-size: 18px;
-            border-left: 4px solid #3498db;
-        }
-       
-        .bullet-item {
-            padding-left: 35px;
-            position: relative;
-            text-align: left;
-            font-weight: 600;
-        }
-       
-        .bullet-item:before {
-            content: "▸";
-            position: absolute;
-            left: 20px;
-            color: #1a5fb4;
-            font-weight: bold;
-            font-size: 18px;
-        }
-       
-        .today-column {
-            background-color: #f0f7ff;
-            border-right: 1px solid #e0e0e0;
-            font-weight: 600;
-            color: #1a5fb4;
-        }
-       
-        .mtd-column {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-       
-        .footer {
-            padding: 25px;
-            background-color: #f8f9fa;
-            text-align: center;
-            color: #555;
-            font-size: 15px;
-            border-top: 1px solid #eaeaea;
-            font-weight: 500;
-        }
-       
+      
+        .generate-btn { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .generate-btn:hover { background: linear-gradient(135deg, #2980b9, #21618c); transform: translateY(-3px); }
+      
+        .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
+        .whatsapp-btn:hover { background: linear-gradient(135deg, #128C7E, #075E54); transform: translateY(-3px); }
+      
+        .excel-btn { background: linear-gradient(135deg, #1e7e34, #156e2a); color: white; }
+        .excel-btn:hover { background: linear-gradient(135deg, #156e2a, #0f5223); transform: translateY(-3px); }
+      
+        .reset-btn, .back-btn { background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; }
+        .reset-btn:hover, .back-btn:hover { background: linear-gradient(135deg, #7f8c8d, #6c7b7d); transform: translateY(-3px); }
+      
+        .report-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        .report-table th { background: #2c3e50; color: white; padding: 22px; text-align: center; font-size: 18px; }
+        .report-table td { padding: 20px; text-align: center; font-size: 17px; border-bottom: 1px solid #eaeaea; }
+      
+        .section-header { background: #f0f7ff; font-weight: 700; color: #2c3e50; }
+        .bullet-item { padding-left: 35px; position: relative; text-align: left; }
+        .bullet-item:before { content: "▸"; position: absolute; left: 20px; color: #1a5fb4; font-size: 18px; }
+      
+        .today-column { background: #f0f7ff; font-weight: 600; color: #1a5fb4; }
+        .mtd-column { background: #f8f9fa; }
+      
+        .cell-box { border: 2px solid #e0e0e0; border-radius: 8px; padding: 15px; margin: 5px 0; background: white; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .highlight { background: linear-gradient(135deg, rgba(52,152,219,0.1), rgba(41,128,185,0.1)); border-left: 5px solid #3498db; }
+      
+        .success-badge { background: #28a745; color: white; padding: 5px 15px; border-radius: 50px; font-size: 14px; font-weight: 600; }
+      
+        .footer { padding: 25px; background: #f8f9fa; text-align: center; color: #555; border-top: 1px solid #eaeaea; }
+      
+        .loading { display: none; text-align: center; padding: 30px; color: #3498db; font-size: 20px; }
+        .loading i { margin-right: 10px; font-size: 24px; }
+      
+        #reportCanvas { display: none; }
+      
         @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-           
-            .report-details {
-                flex-direction: column;
-                gap: 12px;
-                align-items: center;
-            }
-           
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-           
-            button {
-                width: 100%;
-                max-width: 320px;
-            }
-           
-            .report-table th, .report-table td {
-                padding: 15px 12px;
-                font-size: 15px;
-            }
-           
-            h1 {
-                font-size: 28px;
-            }
-        }
-       
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 30px;
-            color: #3498db;
-            font-size: 20px;
-            font-weight: 600;
-        }
-       
-        .loading i {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-       
-        #reportCanvas {
-            display: none;
-            max-width: 100%;
-        }
-       
-        .cell-box {
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 5px 0;
-            background: white;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-       
-        .highlight {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
-            border-left: 5px solid #3498db;
-        }
-       
-        .success-badge {
-            display: inline-block;
-            background: #28a745;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-left: 10px;
+            h1 { font-size: 28px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; }
+            button { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
 <body>
     <h1><i class="fas fa-chart-line"></i> Production Report Generator</h1>
-   
+  
     <div class="container">
-        <!-- Input Section -->
         <div class="input-section" id="inputSection">
             <h2 class="section-title">Enter Production Data</h2>
-           
+          
             <div class="form-grid">
-                <!-- Report Info -->
-                <div class="input-group">
-                    <label><i class="fas fa-map-marker-alt"></i> Site Name</label>
-                    <input type="text" id="siteName" value="9HA" placeholder="Enter site name">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-calendar-alt"></i> Report Date</label>
-                    <input type="date" id="reportDate" value="2025-12-29">
-                </div>
-               
-                <!-- TODAY Data -->
-                <div class="input-group">
-                    <label><i class="fas fa-calendar-day"></i> TODAY - Holes (Nos.)</label>
-                    <input type="number" id="todayHoles" value="587">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-ruler-vertical"></i> TODAY - Feet (ft)</label>
-                    <input type="number" step="0.1" id="todayFeet" value="2964">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-weight-hanging"></i> TODAY - A-Grade (Tons)</label>
-                    <input type="number" step="0.1" id="todayAGrade" value="2371.2">
-                </div>
-               
-                <!-- MTD Data -->
-                <div class="input-group">
-                    <label><i class="fas fa-calendar-month"></i> MTD - Holes (Nos.)</label>
-                    <input type="number" id="mtdHoles" value="4689">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-ruler-combined"></i> MTD - Feet (ft)</label>
-                    <input type="number" step="0.1" id="mtdFeet" value="24158.5">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-truck-loading"></i> MTD - A-Grade (Tons)</label>
-                    <input type="number" step="0.1" id="mtdAGrade" value="19326.8">
-                </div>
-               
-                <!-- Operations Data -->
-                <div class="input-group">
-                    <label><i class="fas fa-bomb"></i> Blasting Status</label>
-                    <input type="text" id="blastingStatus" value="Completed">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-compress-arrows-alt"></i> TODAY - Compressors (Nos.)</label>
-                    <input type="number" id="todayCompressors" value="9">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-compress-arrows-alt"></i> MTD - Compressors (Nos.)</label>
-                    <input type="number" id="mtdCompressors" value="81">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-hard-hat"></i> TODAY - NMR (Nos.)</label>
-                    <input type="number" id="todayNMR" value="9">
-                </div>
-               
-                <div class="input-group">
-                    <label><i class="fas fa-hard-hat"></i> MTD - NMR (Nos.)</label>
-                    <input type="number" id="mtdNMR" value="85">
-                </div>
+                <div class="input-group"><label>Site Name</label><input type="text" id="siteName" value="9HA"></div>
+                <div class="input-group"><label>Report Date</label><input type="date" id="reportDate" value="2025-12-29"></div>
+                <div class="input-group"><label>TODAY - Holes (Nos.)</label><input type="number" id="todayHoles" value="587"></div>
+                <div class="input-group"><label>TODAY - Feet (ft)</label><input type="number" step="0.1" id="todayFeet" value="2964"></div>
+                <div class="input-group"><label>TODAY - A-Grade (Tons)</label><input type="number" step="0.1" id="todayAGrade" value="2371.2"></div>
+                <div class="input-group"><label>MTD - Holes (Nos.)</label><input type="number" id="mtdHoles" value="4689"></div>
+                <div class="input-group"><label>MTD - Feet (ft)</label><input type="number" step="0.1" id="mtdFeet" value="24158.5"></div>
+                <div class="input-group"><label>MTD - A-Grade (Tons)</label><input type="number" step="0.1" id="mtdAGrade" value="19326.8"></div>
+                <div class="input-group"><label>Blasting Status</label><input type="text" id="blastingStatus" value="Completed"></div>
+                <div class="input-group"><label>TODAY - Compressors</label><input type="number" id="todayCompressors" value="9"></div>
+                <div class="input-group"><label>MTD - Compressors</label><input type="number" id="mtdCompressors" value="81"></div>
+                <div class="input-group"><label>TODAY - NMR</label><input type="number" id="todayNMR" value="9"></div>
+                <div class="input-group"><label>MTD - NMR</label><input type="number" id="mtdNMR" value="85"></div>
             </div>
-           
+          
             <div class="button-group">
-                <button class="generate-btn" onclick="generateReport()">
-                    <i class="fas fa-file-alt"></i> Generate Report
-                </button>
-                <button class="reset-btn" onclick="resetForm()">
-                    <i class="fas fa-redo"></i> Reset Form
-                </button>
+                <button class="generate-btn" onclick="generateReport()"><i class="fas fa-file-alt"></i> Generate Report</button>
+                <button class="reset-btn" onclick="resetForm()"><i class="fas fa-redo"></i> Reset Form</button>
             </div>
         </div>
-       
-        <!-- Loading Indicator -->
-        <div class="loading" id="loading">
-            <i class="fas fa-spinner fa-spin"></i> Generating Report...
-        </div>
-       
-        <!-- Report Section -->
+      
+        <div class="loading" id="loading"><i class="fas fa-spinner fa-spin"></i> Generating Report...</div>
+      
         <div class="report-section" id="reportSection">
             <div class="report-container" id="reportToShare">
                 <div class="report-header">
@@ -490,129 +191,70 @@
                         <span><i class="fas fa-map-marker-alt"></i> Site: <span id="displaySite">9HA</span></span>
                     </div>
                 </div>
-               
+              
                 <table class="report-table">
-                    <thead>
-                        <tr>
-                            <th>SECTION</th>
-                            <th>TODAY</th>
-                            <th>MTD</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>SECTION</th><th>TODAY</th><th>MTD</th></tr></thead>
                     <tbody>
-                        <!-- DRILLING SECTION -->
-                        <tr class="section-header">
-                            <td><i class="fas fa-digging"></i> DRILLING</td>
-                            <td class="today-column"></td>
-                            <td class="mtd-column"></td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">Holes (Nos.)</td>
-                            <td class="today-column cell-box highlight" id="todayHolesDisplay">587 Nos.</td>
-                            <td class="mtd-column cell-box" id="mtdHolesDisplay">4,689 Nos.</td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">Feet (ft)</td>
-                            <td class="today-column cell-box highlight" id="todayFeetDisplay">2,964 ft</td>
-                            <td class="mtd-column cell-box" id="mtdFeetDisplay">24,158.5 ft</td>
-                        </tr>
-                       
-                        <!-- PRODUCTION SECTION -->
-                        <tr class="section-header">
-                            <td><i class="fas fa-industry"></i> PRODUCTION</td>
-                            <td class="today-column"></td>
-                            <td class="mtd-column"></td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">A-Grade (Tons)</td>
-                            <td class="today-column cell-box highlight" id="todayAGradeDisplay">2,371.2 Tons</td>
-                            <td class="mtd-column cell-box" id="mtdAGradeDisplay">19,326.8 Tons</td>
-                        </tr>
-                       
-                        <!-- OPERATIONS SECTION -->
-                        <tr class="section-header">
-                            <td><i class="fas fa-cogs"></i> OPERATIONS</td>
-                            <td class="today-column"></td>
-                            <td class="mtd-column"></td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">Blasting Status</td>
-                            <td class="today-column cell-box" id="blastingDisplay">
-                                <span class="success-badge">Completed</span>
-                            </td>
-                            <td class="mtd-column cell-box">-</td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">Compressors (Nos.)</td>
-                            <td class="today-column cell-box highlight" id="todayCompressorsDisplay">09 Nos.</td>
-                            <td class="mtd-column cell-box" id="mtdCompressorsDisplay">81 Nos.</td>
-                        </tr>
-                        <tr>
-                            <td class="bullet-item">NMR (Nos.)</td>
-                            <td class="today-column cell-box highlight" id="todayNMRDisplay">09 Nos.</td>
-                            <td class="mtd-column cell-box" id="mtdNMRDisplay">85 Nos.</td>
-                        </tr>
+                        <tr class="section-header"><td><i class="fas fa-digging"></i> DRILLING</td><td></td><td></td></tr>
+                        <tr><td class="bullet-item">Holes (Nos.)</td><td class="today-column cell-box highlight" id="todayHolesDisplay">587 Nos.</td><td class="mtd-column cell-box" id="mtdHolesDisplay">4,689 Nos.</td></tr>
+                        <tr><td class="bullet-item">Feet (ft)</td><td class="today-column cell-box highlight" id="todayFeetDisplay">2,964 ft</td><td class="mtd-column cell-box" id="mtdFeetDisplay">24,158.5 ft</td></tr>
+                        
+                        <tr class="section-header"><td><i class="fas fa-industry"></i> PRODUCTION</td><td></td><td></td></tr>
+                        <tr><td class="bullet-item">A-Grade (Tons)</td><td class="today-column cell-box highlight" id="todayAGradeDisplay">2,371.2 Tons</td><td class="mtd-column cell-box" id="mtdAGradeDisplay">19,326.8 Tons</td></tr>
+                        
+                        <tr class="section-header"><td><i class="fas fa-cogs"></i> OPERATIONS</td><td></td><td></td></tr>
+                        <tr><td class="bullet-item">Blasting Status</td><td class="today-column cell-box" id="blastingDisplay"><span class="success-badge">Completed</span></td><td class="mtd-column cell-box">-</td></tr>
+                        <tr><td class="bullet-item">Compressors (Nos.)</td><td class="today-column cell-box highlight" id="todayCompressorsDisplay">09 Nos.</td><td class="mtd-column cell-box" id="mtdCompressorsDisplay">81 Nos.</td></tr>
+                        <tr><td class="bullet-item">NMR (Nos.)</td><td class="today-column cell-box highlight" id="todayNMRDisplay">09 Nos.</td><td class="mtd-column cell-box" id="mtdNMRDisplay">85 Nos.</td></tr>
                     </tbody>
                 </table>
-               
+              
                 <div class="footer">
                     <i class="fas fa-info-circle"></i> Generated by Production Report System | For internal use only
                 </div>
             </div>
-           
+          
             <div class="button-group" style="margin-top: 30px;">
-                <button class="whatsapp-btn" onclick="generateAndShareImage()">
-                    <i class="fab fa-whatsapp"></i> Share as Image to WhatsApp
-                </button>
-                <button class="back-btn" onclick="backToInput()">
-                    <i class="fas fa-edit"></i> Edit Report
-                </button>
+                <button class="whatsapp-btn" onclick="generateAndShareImage()"><i class="fab fa-whatsapp"></i> Share Image via WhatsApp</button>
+                <button class="excel-btn" onclick="copyToExcel()"><i class="fas fa-copy"></i> Copy for Excel</button>
+                <button class="back-btn" onclick="backToInput()"><i class="fas fa-edit"></i> Edit Report</button>
             </div>
-           
-            <canvas id="reportCanvas" width="1000" height="1400"></canvas>
+          
+            <canvas id="reportCanvas"></canvas>
         </div>
     </div>
-   
+  
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-   
+  
     <script>
         function generateReport() {
             document.getElementById('loading').style.display = 'block';
-           
+          
             const siteName = document.getElementById('siteName').value || '9HA';
             const reportDate = document.getElementById('reportDate').value;
             const formattedDate = formatDate(reportDate);
-           
-            // Update header
+          
             document.getElementById('reportTitle').textContent = `PRODUCTION REPORT – ${siteName}`;
             document.getElementById('displayDate').textContent = formattedDate;
             document.getElementById('displaySite').textContent = siteName;
-           
-            // Drilling & Production
+          
             document.getElementById('todayHolesDisplay').textContent = `${formatNumber(document.getElementById('todayHoles').value)} Nos.`;
             document.getElementById('todayFeetDisplay').textContent = `${formatNumber(document.getElementById('todayFeet').value, 1)} ft`;
             document.getElementById('todayAGradeDisplay').textContent = `${formatNumber(document.getElementById('todayAGrade').value, 1)} Tons`;
-           
             document.getElementById('mtdHolesDisplay').textContent = `${formatNumber(document.getElementById('mtdHoles').value)} Nos.`;
             document.getElementById('mtdFeetDisplay').textContent = `${formatNumber(document.getElementById('mtdFeet').value, 1)} ft`;
             document.getElementById('mtdAGradeDisplay').textContent = `${formatNumber(document.getElementById('mtdAGrade').value, 1)} Tons`;
-           
-            // Operations
+          
             const blastingStatus = document.getElementById('blastingStatus').value.trim();
             document.getElementById('blastingDisplay').innerHTML = blastingStatus ?
                 `<span class="success-badge">${blastingStatus}</span>` :
                 '<span style="color:#e74c3c;">Not Completed</span>';
-           
-            const todayComp = document.getElementById('todayCompressors').value || '0';
-            const mtdComp = document.getElementById('mtdCompressors').value || '0';
-            document.getElementById('todayCompressorsDisplay').textContent = `${todayComp.padStart(2, '0')} Nos.`;
-            document.getElementById('mtdCompressorsDisplay').textContent = `${mtdComp.padStart(2, '0')} Nos.`;
-           
-            const todayNMR = document.getElementById('todayNMR').value || '0';
-            const mtdNMR = document.getElementById('mtdNMR').value || '0';
-            document.getElementById('todayNMRDisplay').textContent = `${todayNMR.padStart(2, '0')} Nos.`;
-            document.getElementById('mtdNMRDisplay').textContent = `${mtdNMR.padStart(2, '0')} Nos.`;
-           
+          
+            document.getElementById('todayCompressorsDisplay').textContent = `${(document.getElementById('todayCompressors').value || '0').padStart(2, '0')} Nos.`;
+            document.getElementById('mtdCompressorsDisplay').textContent = `${(document.getElementById('mtdCompressors').value || '0').padStart(2, '0')} Nos.`;
+            document.getElementById('todayNMRDisplay').textContent = `${(document.getElementById('todayNMR').value || '0').padStart(2, '0')} Nos.`;
+            document.getElementById('mtdNMRDisplay').textContent = `${(document.getElementById('mtdNMR').value || '0').padStart(2, '0')} Nos.`;
+          
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('inputSection').style.display = 'none';
@@ -620,109 +262,112 @@
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }, 800);
         }
-       
-        function resetForm() {
-            document.getElementById('siteName').value = '9HA';
-            document.getElementById('reportDate').value = '2025-12-29';
-            document.getElementById('todayHoles').value = '587';
-            document.getElementById('todayFeet').value = '2964';
-            document.getElementById('todayAGrade').value = '2371.2';
-            document.getElementById('mtdHoles').value = '4689';
-            document.getElementById('mtdFeet').value = '24158.5';
-            document.getElementById('mtdAGrade').value = '19326.8';
-            document.getElementById('blastingStatus').value = 'Completed';
-            document.getElementById('todayCompressors').value = '9';
-            document.getElementById('mtdCompressors').value = '81';
-            document.getElementById('todayNMR').value = '9';
-            document.getElementById('mtdNMR').value = '85';
-        }
-       
-        function backToInput() {
-            document.getElementById('inputSection').style.display = 'block';
-            document.getElementById('reportSection').style.display = 'none';
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-       
-        function generateAndShareImage() {
-            const reportElement = document.getElementById('reportToShare');
-            const whatsappBtn = document.querySelector('.whatsapp-btn');
-            const originalText = whatsappBtn.innerHTML;
-            whatsappBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Image...';
-            whatsappBtn.disabled = true;
-           
-            html2canvas(reportElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-                logging: false
-            }).then(canvas => {
-                const imageData = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.href = imageData;
-                link.download = `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`;
-               
-                if (navigator.share) {
-                    fetch(imageData).then(res => res.blob()).then(blob => {
-                        const file = new File([blob], link.download, { type: 'image/png' });
-                        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                            navigator.share({
-                                files: [file],
-                                title: `Production Report - ${siteName}`,
-                                text: `Production report for ${formattedDate}`
-                            }).catch(() => link.click());
-                        } else {
-                            link.click();
-                        }
-                    });
-                } else {
-                    link.click();
-                    alert('✅ Image downloaded!\nOpen WhatsApp and send the file:\n' + link.download);
-                }
-               
-                whatsappBtn.innerHTML = originalText;
-                whatsappBtn.disabled = false;
-            }).catch(err => {
-                console.error(err);
-                alert('Error generating image. Try screenshot instead.');
-                whatsappBtn.innerHTML = originalText;
-                whatsappBtn.disabled = false;
+      
+        function copyToExcel() {
+            const data = [
+                ["PRODUCTION REPORT", document.getElementById('displaySite').textContent, document.getElementById('displayDate').textContent],
+                [],
+                ["SECTION", "TODAY", "MTD"],
+                ["DRILLING"],
+                ["Holes (Nos.)", document.getElementById('todayHolesDisplay').textContent, document.getElementById('mtdHolesDisplay').textContent],
+                ["Feet (ft)", document.getElementById('todayFeetDisplay').textContent, document.getElementById('mtdFeetDisplay').textContent],
+                ["PRODUCTION"],
+                ["A-Grade (Tons)", document.getElementById('todayAGradeDisplay').textContent, document.getElementById('mtdAGradeDisplay').textContent],
+                ["OPERATIONS"],
+                ["Blasting Status", document.getElementById('blastingDisplay').textContent.replace(/<[^>]*>/g, ''), "-"],
+                ["Compressors (Nos.)", document.getElementById('todayCompressorsDisplay').textContent, document.getElementById('mtdCompressorsDisplay').textContent],
+                ["NMR (Nos.)", document.getElementById('todayNMRDisplay').textContent, document.getElementById('mtdNMRDisplay').textContent]
+            ];
+          
+            let tsv = data.map(row => row.join('\t')).join('\n');
+          
+            navigator.clipboard.writeText(tsv).then(() => {
+                alert('✅ Data copied to clipboard!\nPaste it directly into Excel or Google Sheets.');
+            }).catch(() => {
+                prompt('Copy this text and paste into Excel:', tsv);
             });
         }
-       
-        function formatDate(dateString) {
-            if (!dateString) {
-                const today = new Date();
-                dateString = today.toISOString().split('T')[0];
-            }
-            const date = new Date(dateString);
-            const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}-${month}-${year}`;
+      
+        async function generateAndShareImage() {
+            const btn = document.querySelector('.whatsapp-btn');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+          
+            const element = document.getElementById('reportToShare');
+            const canvas = await html2canvas(element, {
+                scale: window.devicePixelRatio >= 2 ? 2 : 1.5,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            });
+          
+            canvas.toBlob(async (blob) => {
+                const file = new File([blob], `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`, { type: 'image/png' });
+          
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({
+                            files: [file],
+                            title: 'Production Report',
+                            text: `Report for ${document.getElementById('displaySite').textContent} - ${document.getElementById('displayDate').textContent}`
+                        });
+                    } catch (err) {
+                        downloadImage(canvas);
+                    }
+                } else {
+                    downloadImage(canvas);
+                }
+          
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }, 'image/png');
         }
-       
+      
+        function downloadImage(canvas) {
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Production_Report_${document.getElementById('displaySite').textContent}_${document.getElementById('displayDate').textContent}.png`;
+                a.click();
+                URL.revokeObjectURL(url);
+                alert('✅ Image downloaded! You can now attach it in WhatsApp.');
+            });
+        }
+      
+        function formatDate(dateString) {
+            if (!dateString) return formatDate(new Date().toISOString().split('T')[0]);
+            const [y, m, d] = dateString.split('-');
+            return `${d.padStart(2, '0')}-${m.padStart(2, '0')}-${y}`;
+        }
+      
         function formatNumber(value, decimals = 0) {
             if (!value) return '0';
             const num = parseFloat(value);
             if (isNaN(num)) return '0';
-            return num.toLocaleString('en-IN', {
-                minimumFractionDigits: decimals,
-                maximumFractionDigits: decimals
+            return num.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        }
+      
+        function resetForm() {
+            document.querySelectorAll('input').forEach(i => {
+                if (i.type === 'text') i.value = i.defaultValue || '';
+                if (i.type === 'number') i.value = i.defaultValue || 0;
+                if (i.type === 'date') i.value = '2025-12-29';
             });
         }
-       
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date();
-            const formattedToday = today.toISOString().split('T')[0];
+      
+        function backToInput() {
+            document.getElementById('inputSection').style.display = 'block';
+            document.getElementById('reportSection').style.display = 'none';
+        }
+      
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
             if (!document.getElementById('reportDate').value) {
-                document.getElementById('reportDate').value = formattedToday;
+                document.getElementById('reportDate').value = today;
             }
-           
-            document.querySelectorAll('input[type="number"]').forEach(input => {
-                input.addEventListener('change', function() {
-                    if (this.value < 0) this.value = 0;
-                });
-            });
         });
     </script>
 </body>
