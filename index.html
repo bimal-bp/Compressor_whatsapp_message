@@ -10,258 +10,274 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
-      
+
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-      
+
         .container {
             width: 100%;
             max-width: 1100px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
-      
+
         .input-section, .report-section {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
         }
-      
+
         .report-section { display: none; }
-      
+
         h1 {
             color: white;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            font-size: 32px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
             font-weight: 700;
         }
-      
+
         .section-title {
             color: #2c3e50;
-            margin-bottom: 25px;
-            padding-bottom: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
             border-bottom: 3px solid #3498db;
-            font-size: 24px;
+            font-size: 22px;
             text-align: center;
         }
-      
+
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 25px;
         }
-      
+
         .input-group label {
-            margin-bottom: 10px;
+            display: block;
+            margin-bottom: 8px;
             color: #2c3e50;
             font-weight: 600;
             font-size: 15px;
         }
-      
+
         .input-group input {
-            padding: 14px 18px;
+            width: 100%;
+            padding: 14px 16px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
             background-color: #fafafa;
         }
-      
+
         .input-group input:focus {
             outline: none;
             border-color: #3498db;
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
-      
+
         .button-group {
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 25px;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
-      
+
         button {
-            padding: 16px 30px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            min-width: 180px;
+            min-width: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-      
-        .generate-btn { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
-        .generate-btn:hover { background: linear-gradient(135deg, #2980b9, #21618c); transform: translateY(-3px); }
-      
-        .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
-        .whatsapp-btn:hover { background: linear-gradient(135deg, #128C7E, #075E54); transform: translateY(-3px); }
-      
-        .excel-btn { background: linear-gradient(135deg, #1e7e34, #156e2a); color: white; }
-        .excel-btn:hover { background: linear-gradient(135deg, #156e2a, #0f5223); transform: translateY(-3px); }
-      
-        .reset-btn, .back-btn { background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; }
-        .reset-btn:hover, .back-btn:hover { background: linear-gradient(135deg, #7f8c8d, #6c7b7d); transform: translateY(-3px); }
-      
+
+        .generate-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .generate-btn:hover, .generate-btn:active {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            font-size: 18px;
+        }
+
+        .whatsapp-btn:hover, .whatsapp-btn:active {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-2px);
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
+            transform: translateY(-2px);
+        }
+
         /* Excel Style Report */
         .excel-report {
             background: white;
             border: 2px solid #d4d4d4;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             margin: 20px auto;
             max-width: 900px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-      
+
         .excel-header {
             background: #2c3e50;
             color: white;
             padding: 25px;
             text-align: center;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 4px solid #3498db;
         }
-      
+
         .excel-title {
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
         }
-      
+
         .excel-subtitle {
             font-size: 16px;
             opacity: 0.9;
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
         }
-      
+
         .excel-subtitle span {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-      
+
         .excel-table {
             width: 100%;
             border-collapse: collapse;
-            font-family: 'Arial', sans-serif;
+            font-size: 17px;
         }
-      
+
         .excel-table th {
             background: #f0f7ff;
             color: #2c3e50;
-            padding: 20px 15px;
+            padding: 18px 12px;
             text-align: center;
-            font-size: 18px;
             font-weight: 700;
             border: 1px solid #d0d0d0;
         }
-      
+
         .excel-table td {
-            padding: 18px 15px;
+            padding: 16px 12px;
             text-align: center;
-            font-size: 17px;
             border: 1px solid #e0e0e0;
-            background: white;
         }
-      
-        .excel-table tr:nth-child(even) td {
-            background: #f9f9f9;
-        }
-      
+
+        .excel-table tr:nth-child(even) td { background: #f9f9f9; }
         .excel-table tr.section-row td {
             background: #e8f4fc;
             font-weight: 700;
             color: #2c3e50;
             font-size: 18px;
-            border-top: 2px solid #3498db;
-            border-bottom: 2px solid #3498db;
+            border-top: 3px solid #3498db;
+            border-bottom: 3px solid #3498db;
         }
-      
-        .excel-table .today-cell {
-            background: #e8f7e8;
+
+        .today-cell {
+            background: #e8f7e8 !important;
             font-weight: 600;
             color: #1a5fb4;
-            border-left: 3px solid #2ecc71;
+            border-left: 4px solid #2ecc71;
         }
-      
-        .excel-table .mtd-cell {
-            background: #f5f5f5;
-            border-left: 3px solid #95a5a6;
+
+        .mtd-cell {
+            background: #f5f5f5 !important;
+            border-left: 4px solid #95a5a6;
         }
-      
+
         .excel-badge {
             background: #28a745;
             color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 8px 18px;
+            border-radius: 6px;
             font-weight: 600;
-            display: inline-block;
-            min-width: 100px;
+            font-size: 16px;
         }
-      
+
         .excel-footer {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             color: #555;
             font-size: 14px;
             border-top: 1px solid #e0e0e0;
         }
-      
+
         .loading {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: #3498db;
             font-size: 20px;
         }
-      
+
         .loading i {
-            margin-right: 10px;
-            font-size: 24px;
+            font-size: 28px;
+            margin-right: 12px;
         }
-      
+
         @media (max-width: 768px) {
             h1 { font-size: 28px; }
             .form-grid { grid-template-columns: 1fr; }
-            .button-group { flex-direction: column; }
-            button { width: 100%; max-width: 320px; }
-            .excel-title { font-size: 22px; }
+            .button-group { flex-direction: column; align-items: center; }
+            button { width: 100%; max-width: 350px; }
+            .excel-title { font-size: 24px; }
+            .excel-subtitle { flex-direction: column; gap: 12px; }
             .excel-table th, .excel-table td { padding: 12px 8px; font-size: 15px; }
         }
     </style>
 </head>
 <body>
     <h1><i class="fas fa-chart-line"></i> Production Report Generator</h1>
-  
+
     <div class="container">
         <div class="input-section" id="inputSection">
             <h2 class="section-title">Enter Production Data</h2>
-          
+
             <div class="form-grid">
                 <div class="input-group"><label>Site Name</label><input type="text" id="siteName" value="9HA"></div>
-                <div class="input-group"><label>Report Date</label><input type="date" id="reportDate" value="2025-12-29"></div>
+                <div class="input-group"><label>Report Date</label><input type="date" id="reportDate"></div>
                 <div class="input-group"><label>TODAY - Holes (Nos.)</label><input type="number" id="todayHoles" value="587"></div>
                 <div class="input-group"><label>TODAY - Feet (ft)</label><input type="number" step="0.1" id="todayFeet" value="2964"></div>
                 <div class="input-group"><label>TODAY - A-Grade (Tons)</label><input type="number" step="0.1" id="todayAGrade" value="2371.2"></div>
@@ -274,279 +290,176 @@
                 <div class="input-group"><label>TODAY - NMR</label><input type="number" id="todayNMR" value="9"></div>
                 <div class="input-group"><label>MTD - NMR</label><input type="number" id="mtdNMR" value="85"></div>
             </div>
-          
+
             <div class="button-group">
                 <button class="generate-btn" onclick="generateReport()"><i class="fas fa-file-alt"></i> Generate Report</button>
-                <button class="reset-btn" onclick="resetForm()"><i class="fas fa-redo"></i> Reset Form</button>
             </div>
         </div>
-      
+
         <div class="loading" id="loading"><i class="fas fa-spinner fa-spin"></i> Generating Report...</div>
-      
+
         <div class="report-section" id="reportSection">
-            <!-- Excel Style Report for WhatsApp Image -->
             <div class="excel-report" id="excelReport">
                 <div class="excel-header">
                     <div class="excel-title" id="excelReportTitle">PRODUCTION REPORT – 9HA</div>
                     <div class="excel-subtitle">
-                        <span><i class="fas fa-calendar-alt"></i> Date: <span id="excelDisplayDate">29-12-2025</span></span>
+                        <span><i class="fas fa-calendar-alt"></i> Date: <span id="excelDisplayDate">30-12-2025</span></span>
                         <span><i class="fas fa-map-marker-alt"></i> Site: <span id="excelDisplaySite">9HA</span></span>
                     </div>
                 </div>
-              
+
                 <table class="excel-table">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">SECTION</th>
-                            <th style="width: 30%;">TODAY</th>
-                            <th style="width: 30%;">MTD</th>
+                            <th>SECTION</th>
+                            <th>TODAY</th>
+                            <th>MTD</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="section-row">
-                            <td colspan="3"><i class="fas fa-digging"></i> DRILLING</td>
-                        </tr>
-                        <tr>
-                            <td>Holes (Nos.)</td>
-                            <td class="today-cell" id="excelTodayHolesDisplay">587 Nos.</td>
-                            <td class="mtd-cell" id="excelMtdHolesDisplay">4,689 Nos.</td>
-                        </tr>
-                        <tr>
-                            <td>Feet (ft)</td>
-                            <td class="today-cell" id="excelTodayFeetDisplay">2,964 ft</td>
-                            <td class="mtd-cell" id="excelMtdFeetDisplay">24,158.5 ft</td>
-                        </tr>
-                        
-                        <tr class="section-row">
-                            <td colspan="3"><i class="fas fa-industry"></i> PRODUCTION</td>
-                        </tr>
-                        <tr>
-                            <td>A-Grade (Tons)</td>
-                            <td class="today-cell" id="excelTodayAGradeDisplay">2,371.2 Tons</td>
-                            <td class="mtd-cell" id="excelMtdAGradeDisplay">19,326.8 Tons</td>
-                        </tr>
-                        
-                        <tr class="section-row">
-                            <td colspan="3"><i class="fas fa-cogs"></i> OPERATIONS</td>
-                        </tr>
-                        <tr>
-                            <td>Blasting Status</td>
-                            <td class="today-cell" id="excelBlastingDisplay"><span class="excel-badge">Completed</span></td>
-                            <td class="mtd-cell">-</td>
-                        </tr>
-                        <tr>
-                            <td>Compressors (Nos.)</td>
-                            <td class="today-cell" id="excelTodayCompressorsDisplay">09 Nos.</td>
-                            <td class="mtd-cell" id="excelMtdCompressorsDisplay">81 Nos.</td>
-                        </tr>
-                        <tr>
-                            <td>NMR (Nos.)</td>
-                            <td class="today-cell" id="excelTodayNMRDisplay">09 Nos.</td>
-                            <td class="mtd-cell" id="excelMtdNMRDisplay">85 Nos.</td>
-                        </tr>
+                        <tr class="section-row"><td colspan="3"><i class="fas fa-digging"></i> DRILLING</td></tr>
+                        <tr><td>Holes (Nos.)</td><td class="today-cell" id="excelTodayHolesDisplay">587 Nos.</td><td class="mtd-cell" id="excelMtdHolesDisplay">4,689 Nos.</td></tr>
+                        <tr><td>Feet (ft)</td><td class="today-cell" id="excelTodayFeetDisplay">2,964 ft</td><td class="mtd-cell" id="excelMtdFeetDisplay">24,158.5 ft</td></tr>
+
+                        <tr class="section-row"><td colspan="3"><i class="fas fa-industry"></i> PRODUCTION</td></tr>
+                        <tr><td>A-Grade (Tons)</td><td class="today-cell" id="excelTodayAGradeDisplay">2,371.2 Tons</td><td class="mtd-cell" id="excelMtdAGradeDisplay">19,326.8 Tons</td></tr>
+
+                        <tr class="section-row"><td colspan="3"><i class="fas fa-cogs"></i> OPERATIONS</td></tr>
+                        <tr><td>Blasting Status</td><td class="today-cell" id="excelBlastingDisplay"><span class="excel-badge">Completed</span></td><td class="mtd-cell">-</td></tr>
+                        <tr><td>Compressors (Nos.)</td><td class="today-cell" id="excelTodayCompressorsDisplay">09 Nos.</td><td class="mtd-cell" id="excelMtdCompressorsDisplay">81 Nos.</td></tr>
+                        <tr><td>NMR (Nos.)</td><td class="today-cell" id="excelTodayNMRDisplay">09 Nos.</td><td class="mtd-cell" id="excelMtdNMRDisplay">85 Nos.</td></tr>
                     </tbody>
                 </table>
-              
+
                 <div class="excel-footer">
                     <i class="fas fa-info-circle"></i> Generated by Production Report System | For internal use only
                 </div>
             </div>
-          
-            <div class="button-group" style="margin-top: 30px;">
-                <button class="whatsapp-btn" onclick="shareExcelImage()"><i class="fab fa-whatsapp"></i> Share Excel Image on WhatsApp</button>
-                <button class="excel-btn" onclick="copyToExcel()"><i class="fas fa-copy"></i> Copy for Excel</button>
-                <button class="back-btn" onclick="backToInput()"><i class="fas fa-edit"></i> Edit Report</button>
+
+            <div class="button-group">
+                <button class="whatsapp-btn" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i> Share on WhatsApp</button>
+                <button class="back-btn" onclick="backToInput()"><i class="fas fa-arrow-left"></i> Edit Report</button>
             </div>
-          
-            <canvas id="reportCanvas" style="display: none;"></canvas>
         </div>
     </div>
-  
+
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  
     <script>
+        // Set today's date by default
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('reportDate').value = today;
+            document.getElementById('excelDisplayDate').textContent = formatDate(today);
+        });
+
+        function formatDate(dateStr) {
+            const [y, m, d] = dateStr.split('-');
+            return `${d.padStart(2, '0')}-${m.padStart(2, '0')}-${y}`;
+        }
+
+        function formatNumber(val, decimals = 0) {
+            const num = parseFloat(val);
+            if (isNaN(num)) return '0';
+            return num.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        }
+
         function generateReport() {
             document.getElementById('loading').style.display = 'block';
-          
-            const siteName = document.getElementById('siteName').value || '9HA';
-            const reportDate = document.getElementById('reportDate').value;
-            const formattedDate = formatDate(reportDate);
-          
-            // Update Excel Style Report
-            document.getElementById('excelReportTitle').textContent = `PRODUCTION REPORT – ${siteName}`;
-            document.getElementById('excelDisplayDate').textContent = formattedDate;
-            document.getElementById('excelDisplaySite').textContent = siteName;
-          
+
+            const site = document.getElementById('siteName').value.trim() || 'Site';
+            const date = document.getElementById('reportDate').value;
+            const fDate = formatDate(date);
+
+            // Update report
+            document.getElementById('excelReportTitle').textContent = `PRODUCTION REPORT – ${site.toUpperCase()}`;
+            document.getElementById('excelDisplaySite').textContent = site.toUpperCase();
+            document.getElementById('excelDisplayDate').textContent = fDate;
+
             document.getElementById('excelTodayHolesDisplay').textContent = `${formatNumber(document.getElementById('todayHoles').value)} Nos.`;
             document.getElementById('excelTodayFeetDisplay').textContent = `${formatNumber(document.getElementById('todayFeet').value, 1)} ft`;
             document.getElementById('excelTodayAGradeDisplay').textContent = `${formatNumber(document.getElementById('todayAGrade').value, 1)} Tons`;
             document.getElementById('excelMtdHolesDisplay').textContent = `${formatNumber(document.getElementById('mtdHoles').value)} Nos.`;
             document.getElementById('excelMtdFeetDisplay').textContent = `${formatNumber(document.getElementById('mtdFeet').value, 1)} ft`;
             document.getElementById('excelMtdAGradeDisplay').textContent = `${formatNumber(document.getElementById('mtdAGrade').value, 1)} Tons`;
-          
-            const blastingStatus = document.getElementById('blastingStatus').value.trim();
-            const badgeHtml = blastingStatus ?
-                `<span class="excel-badge">${blastingStatus}</span>` :
-                '<span style="color:#e74c3c;font-weight:600;">Not Completed</span>';
-            document.getElementById('excelBlastingDisplay').innerHTML = badgeHtml;
-          
-            document.getElementById('excelTodayCompressorsDisplay').textContent = `${(document.getElementById('todayCompressors').value || '0').padStart(2, '0')} Nos.`;
-            document.getElementById('excelMtdCompressorsDisplay').textContent = `${(document.getElementById('mtdCompressors').value || '0').padStart(2, '0')} Nos.`;
-            document.getElementById('excelTodayNMRDisplay').textContent = `${(document.getElementById('todayNMR').value || '0').padStart(2, '0')} Nos.`;
-            document.getElementById('excelMtdNMRDisplay').textContent = `${(document.getElementById('mtdNMR').value || '0').padStart(2, '0')} Nos.`;
-          
+
+            const blasting = document.getElementById('blastingStatus').value.trim() || 'Not Completed';
+            document.getElementById('excelBlastingDisplay').innerHTML = `<span class="excel-badge">${blasting}</span>`;
+
+            document.getElementById('excelTodayCompressorsDisplay').textContent = String(document.getElementById('todayCompressors').value || 0).padStart(2, '0') + ' Nos.';
+            document.getElementById('excelMtdCompressorsDisplay').textContent = String(document.getElementById('mtdCompressors').value || 0).padStart(2, '0') + ' Nos.';
+            document.getElementById('excelTodayNMRDisplay').textContent = String(document.getElementById('todayNMR').value || 0).padStart(2, '0') + ' Nos.';
+            document.getElementById('excelMtdNMRDisplay').textContent = String(document.getElementById('mtdNMR').value || 0).padStart(2, '0') + ' Nos.';
+
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('inputSection').style.display = 'none';
                 document.getElementById('reportSection').style.display = 'block';
-                window.scrollTo({top: 0, behavior: 'smooth'});
+                window.scrollTo(0, 0);
             }, 800);
         }
-      
-        async function shareExcelImage() {
+
+        async function shareOnWhatsApp() {
             const btn = document.querySelector('.whatsapp-btn');
-            const original = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Image...';
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Image...';
             btn.disabled = true;
-          
+
             try {
-                // Generate image from excel report
                 const element = document.getElementById('excelReport');
-                
-                // Add watermark for better appearance
-                const originalOpacity = element.style.opacity;
-                element.style.opacity = '1';
-                element.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
-                
                 const canvas = await html2canvas(element, {
-                    scale: 2, // High resolution for WhatsApp
-                    useCORS: true,
+                    scale: window.devicePixelRatio || 2,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    allowTaint: true,
-                    onclone: function(clonedDoc) {
-                        const clonedElement = clonedDoc.getElementById('excelReport');
-                        clonedElement.style.transform = 'scale(1)';
-                        clonedElement.style.width = '900px';
-                    }
+                    width: element.offsetWidth,
+                    height: element.offsetHeight
                 });
-                
-                // Restore original styles
-                element.style.opacity = originalOpacity;
-                element.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-                
-                // Create and share image
+
                 canvas.toBlob(async (blob) => {
-                    const fileName = `Production_Report_${document.getElementById('excelDisplaySite').textContent}_${document.getElementById('excelDisplayDate').textContent}.png`;
+                    const site = document.getElementById('excelDisplaySite').textContent;
+                    const date = document.getElementById('excelDisplayDate').textContent;
+                    const fileName = `Production_Report_${site}_${date.replace(/-/g, '')}.png`;
                     const file = new File([blob], fileName, { type: 'image/png' });
-                    
-                    // Try Web Share API first (works on mobile)
+
                     if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
                         try {
                             await navigator.share({
                                 files: [file],
                                 title: 'Production Report',
-                                text: `Production Report for ${document.getElementById('excelDisplaySite').textContent}\nDate: ${document.getElementById('excelDisplayDate').textContent}`
+                                text: `Production Report - ${site}\nDate: ${date}`
                             });
                         } catch (err) {
-                            console.log('Web Share failed, falling back to download:', err);
-                            downloadImage(canvas, fileName);
+                            fallbackDownload(canvas, fileName);
                         }
                     } else {
-                        // Fallback for desktop or browsers without Web Share API
-                        downloadImage(canvas, fileName);
-                        
-                        // Show instructions for WhatsApp
-                        alert('✅ Image downloaded!\n\nNow you can:\n1. Open WhatsApp\n2. Select the chat\n3. Tap the attach button (📎)\n4. Choose "Gallery" or "Photos"\n5. Select the downloaded image\n6. Send it!');
+                        fallbackDownload(canvas, fileName);
                     }
-                    
-                    btn.innerHTML = original;
+
+                    btn.innerHTML = originalText;
                     btn.disabled = false;
-                    
                 }, 'image/png');
-                
-            } catch (error) {
-                console.error('Error generating image:', error);
-                alert('Error generating image. Please try again.');
-                btn.innerHTML = original;
+
+            } catch (err) {
+                alert('Failed to generate image. Please try again.');
+                btn.innerHTML = originalText;
                 btn.disabled = false;
             }
         }
-      
-        function downloadImage(canvas, fileName) {
-            // Create download link
+
+        function fallbackDownload(canvas, fileName) {
             const link = document.createElement('a');
             link.download = fileName;
             link.href = canvas.toDataURL('image/png');
-            document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
-            
-            // For mobile browsers, try to open the image in new tab
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                const imgUrl = canvas.toDataURL('image/png');
-                const newWindow = window.open();
-                newWindow.document.write(`<img src="${imgUrl}" style="max-width:100%;" />`);
-            }
+
+            setTimeout(() => {
+                alert('✅ Image saved to your device!\n\nTo share on WhatsApp:\n1. Open WhatsApp\n2. Choose a chat\n3. Tap attach (📎)\n4. Select Gallery/Photos\n5. Choose the downloaded image\n6. Send!');
+            }, 500);
         }
-      
-        function copyToExcel() {
-            const data = [
-                ["PRODUCTION REPORT", document.getElementById('excelDisplaySite').textContent, document.getElementById('excelDisplayDate').textContent],
-                [],
-                ["SECTION", "TODAY", "MTD"],
-                ["DRILLING"],
-                ["Holes (Nos.)", document.getElementById('excelTodayHolesDisplay').textContent, document.getElementById('excelMtdHolesDisplay').textContent],
-                ["Feet (ft)", document.getElementById('excelTodayFeetDisplay').textContent, document.getElementById('excelMtdFeetDisplay').textContent],
-                ["PRODUCTION"],
-                ["A-Grade (Tons)", document.getElementById('excelTodayAGradeDisplay').textContent, document.getElementById('excelMtdAGradeDisplay').textContent],
-                ["OPERATIONS"],
-                ["Blasting Status", document.getElementById('excelBlastingDisplay').textContent.replace(/<[^>]*>/g, ''), "-"],
-                ["Compressors (Nos.)", document.getElementById('excelTodayCompressorsDisplay').textContent, document.getElementById('excelMtdCompressorsDisplay').textContent],
-                ["NMR (Nos.)", document.getElementById('excelTodayNMRDisplay').textContent, document.getElementById('excelMtdNMRDisplay').textContent]
-            ];
-          
-            let tsv = data.map(row => row.join('\t')).join('\n');
-          
-            navigator.clipboard.writeText(tsv).then(() => {
-                alert('✅ Data copied to clipboard!\nPaste it directly into Excel or Google Sheets.');
-            }).catch(() => {
-                prompt('Copy this text and paste into Excel:', tsv);
-            });
-        }
-      
-        function formatDate(dateString) {
-            if (!dateString) return formatDate(new Date().toISOString().split('T')[0]);
-            const [y, m, d] = dateString.split('-');
-            return `${d.padStart(2, '0')}-${m.padStart(2, '0')}-${y}`;
-        }
-      
-        function formatNumber(value, decimals = 0) {
-            if (!value) return '0';
-            const num = parseFloat(value);
-            if (isNaN(num)) return '0';
-            return num.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-        }
-      
-        function resetForm() {
-            document.querySelectorAll('input').forEach(i => {
-                if (i.type === 'text') i.value = i.defaultValue || '';
-                if (i.type === 'number') i.value = i.defaultValue || 0;
-                if (i.type === 'date') i.value = '2025-12-29';
-            });
-        }
-      
+
         function backToInput() {
             document.getElementById('inputSection').style.display = 'block';
             document.getElementById('reportSection').style.display = 'none';
         }
-      
-        // Initialize date to today
-        document.addEventListener('DOMContentLoaded', () => {
-            const today = new Date();
-            const formattedToday = today.toISOString().split('T')[0];
-            document.getElementById('reportDate').value = formattedToday;
-        });
     </script>
 </body>
 </html>
